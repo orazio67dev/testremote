@@ -6,15 +6,7 @@ provider "aws" {
 
 resource "aws_instance" "myec2" {
     ami = "ami-024f768332f080c5e"
-    instance_type = lookup(var.my-var,terraform.workspace)
+    instance_type = "t2.nano"
 }
 
-variable "my-var" {
-    type = map(string)
-    default = {
-        default = "t2.small"
-        dev = "t2.nano"
-        staging = "t2.small"
-        prod = "t2.micro"
-    }
 }
